@@ -1,0 +1,219 @@
+﻿        <svg id="ship" viewBox="0 0 1000 420">
+            <style>
+
+            </style>
+            <defs>
+                <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#5a92b8" />
+                    <stop offset=".15" stop-color="#1a4a72" />
+                    <stop offset=".6" stop-color="#0a2742" />
+                    <stop offset="1" stop-color="#06182b" />
+                </linearGradient>
+                <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#9cc4e4" stop-opacity="0" />
+                    <stop offset="1" stop-color="#9cc4e4" stop-opacity=".4" />
+                </linearGradient>
+                <radialGradient id="sun">
+                    <stop offset="0" stop-color="#ffb054" stop-opacity=".55" />
+                    <stop offset="1" stop-color="#ffb054" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="hullg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#34506c" />
+                    <stop offset="1" stop-color="#0f1b29" />
+                </linearGradient>
+                <linearGradient id="wh" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ffffff" />
+                    <stop offset="1" stop-color="#b9c4cf" />
+                </linearGradient>
+                <linearGradient id="fun" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#f0a010" />
+                    <stop offset="1" stop-color="#b86a00" />
+                </linearGradient>
+                <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#0b3050" stop-opacity="0" />
+                    <stop offset=".45" stop-color="#0b3050" stop-opacity=".8" />
+                    <stop offset="1" stop-color="#0b3050" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#fff" />
+                    <stop offset="1" stop-color="#000" />
+                </linearGradient>
+                <radialGradient id="fog">
+                    <stop offset="0" stop-color="#cfe3f5" stop-opacity=".25" />
+                    <stop offset="1" stop-color="#cfe3f5" stop-opacity="0" />
+                </radialGradient>
+                <pattern id="corr" width="4" height="4" patternUnits="userSpaceOnUse">
+                    <rect width="2" height="4" fill="#000" opacity=".28" />
+                </pattern>
+                <pattern id="plate" width="60" height="56" patternUnits="userSpaceOnUse">
+                    <rect width="1.5" height="56" fill="#000" opacity=".3" />
+                    <rect width="60" height="1" y="14" fill="#fff" opacity=".08" />
+                </pattern>
+                <clipPath id="hc">
+                    <path d="M112 262 L912 262 Q955 256 978 236 L930 338 L130 338 Q104 330 100 300 Z" />
+                </clipPath>
+                <mask id="rm" maskUnits="userSpaceOnUse" x="-100" y="335" width="1300" height="200">
+                    <rect x="-100" y="335" width="1300" height="200" fill="url(#fade)" />
+                </mask>
+                <filter id="rip" filterUnits="userSpaceOnUse" x="-100" y="335" width="1300" height="200">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b" />
+                    <feTurbulence type="fractalNoise" baseFrequency=".005 .08" numOctaves="2" result="t">
+                        <animate attributeName="baseFrequency" values=".005 .08;.007 .1;.005 .08" dur="8s"
+                            repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="b" in2="t" scale="14" />
+                </filter>
+                <filter id="b2">
+                    <feGaussianBlur stdDeviation="2" />
+                </filter>
+                <filter id="b6" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="14" />
+                </filter>
+                <linearGradient id="hfade" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#000" />
+                    <stop offset=".12" stop-color="#fff" />
+                    <stop offset=".88" stop-color="#fff" />
+                    <stop offset="1" stop-color="#000" />
+                </linearGradient>
+                <mask id="hm" maskUnits="userSpaceOnUse" x="60" y="300" width="960" height="100">
+                    <rect x="60" y="300" width="960" height="100" fill="url(#hfade)" />
+                </mask>
+                <filter id="b4" filterUnits="userSpaceOnUse" x="0" y="290" width="1100" height="120">
+                    <feGaussianBlur stdDeviation="6" />
+                </filter>
+            </defs>
+
+            <!-- sky glow + sea -->
+            <ellipse cx="820" cy="300" rx="420" ry="140" fill="url(#sun)" />
+            <rect x="-2000" y="225" width="5000" height="76" fill="url(#haze)" />
+            <rect x="-2000" y="300" width="5000" height="1500" fill="url(#sea)" />
+            <g id="waves"></g>
+
+            <!-- reflection -->
+            <g mask="url(#rm)" opacity=".4" filter="url(#rip)">
+                <g class="rock">
+                    <use href="#shipG" transform="translate(0,670) scale(1,-1)" />
+                </g>
+            </g>
+
+            <!-- SHIP -->
+            <g class="rock">
+                <g id="shipG">
+                    <!-- funnel -->
+                    <rect x="132" y="96" width="40" height="90" fill="url(#fun)" />
+                    <rect x="130" y="88" width="44" height="12" fill="#111" />
+                    <rect x="132" y="122" width="40" height="8" fill="#111" opacity=".8" />
+                    <!-- hull -->
+                    <path d="M112 262 L912 262 Q955 256 978 236 L930 338 L130 338 Q104 330 100 300 Z"
+                        fill="url(#hullg)" />
+                    <g clip-path="url(#hc)">
+                        <rect x="90" y="262" width="900" height="80" fill="url(#plate)" />
+                        <rect x="90" y="312" width="900" height="6" fill="#e08a00" />
+                        <rect x="90" y="318" width="900" height="30" fill="#8a1c1c" />
+                        <rect x="90" y="262" width="900" height="14" fill="#000" opacity=".28" />
+                        <g id="hullfx"></g>
+                        <!-- hull panel seams, scuffs and subtle rivet rows -->
+                        <g opacity=".28" stroke="#a9c0d2" stroke-width="1" fill="none">
+                            <path
+                                d="M160 278 V307 M245 278 V307 M330 278 V307 M415 278 V307 M500 278 V307 M585 278 V307 M670 278 V307 M755 278 V307 M840 278 V307" />
+                            <path d="M140 284 H905 M140 303 H905" stroke-opacity=".22" />
+                        </g>
+                        <g opacity=".32" fill="#d2dbe4">
+                            <circle cx="160" cy="280" r="1.4" />
+                            <circle cx="245" cy="280" r="1.4" />
+                            <circle cx="330" cy="280" r="1.4" />
+                            <circle cx="415" cy="280" r="1.4" />
+                            <circle cx="500" cy="280" r="1.4" />
+                            <circle cx="585" cy="280" r="1.4" />
+                            <circle cx="670" cy="280" r="1.4" />
+                            <circle cx="755" cy="280" r="1.4" />
+                            <circle cx="840" cy="280" r="1.4" />
+                        </g>
+                    </g>
+                    <text x="560" y="297" fill="#f4f4f4" font-size="22" font-weight="700" letter-spacing="7"
+                        text-anchor="middle" font-family="Arial,sans-serif">THE MARIGOLD</text>
+                    <circle cx="947" cy="282" r="5" fill="#0a0a0a" />
+                    <rect x="112" y="256" width="800" height="7" fill="#2a2420" />
+                    <path d="M912 262 V246 H962 L972 238" stroke="#aab4bd" stroke-width="2" fill="none" />
+                    <path d="M912 252 H966" stroke="#aab4bd" stroke-width="5" stroke-dasharray="1.5 6" fill="none" />
+                    <!-- deck equipment and navigation details -->
+                    <g stroke="#8799a9" stroke-width="2" fill="none" opacity=".8">
+                        <path d="M286 255 V238 H302 V255 M292 238 V230 M300 232 H307" />
+                        <path d="M920 260 V246 M928 260 V246 M936 260 V246 M944 260 V246 M952 260 V246" />
+                        <path d="M100 298 Q112 306 130 308" stroke="#9eb1c2" stroke-opacity=".3" />
+                    </g>
+                    <g fill="#ffd27b">
+                        <circle cx="295" cy="235" r="2" />
+                        <circle cx="918" cy="245" r="2" />
+                        <circle cx="963" cy="240" r="2" />
+                    </g>
+                    <!-- cargo -->
+                    <g id="cargo"></g>
+                    <!-- superstructure -->
+                    <rect x="118" y="214" width="146" height="48" fill="url(#wh)" />
+                    <rect x="126" y="182" width="132" height="32" fill="url(#wh)" />
+                    <rect x="136" y="152" width="118" height="30" fill="url(#wh)" />
+                    <rect x="172" y="122" width="96" height="30" fill="url(#wh)" />
+                    <rect x="160" y="140" width="120" height="6" fill="#cfd6dd" />
+                    <rect x="168" y="118" width="104" height="5" fill="#aeb8c2" />
+                    <rect x="178" y="127" width="84" height="11" fill="#7fb8e0" opacity=".8" />
+                    <rect x="178" y="127" width="84" height="11" fill="#16324a" opacity=".45" />
+                    <rect x="118" y="214" width="146" height="48" fill="#000" opacity=".06" />
+                    <g id="win"></g>
+                    <!-- bridge wings, railings, deck ladders and cabin structure -->
+                    <g stroke="#c7d0d9" stroke-width="2" fill="none" opacity=".72">
+                        <path d="M168 151 V116 H274 V151 M172 116 H270 M174 112 H268" />
+                        <path d="M136 182 H254 M126 214 H258 M118 262 H264" />
+                        <path
+                            d="M126 210 V214 M142 210 V214 M158 210 V214 M174 210 V214 M190 210 V214 M206 210 V214 M222 210 V214 M238 210 V214 M254 210 V214"
+                            opacity=".5" />
+                        <path d="M268 152 V182 M260 182 V214" stroke="#8c9ba9" />
+                    </g>
+                    <g fill="#263b4d" opacity=".65">
+                        <rect x="169" y="146" width="100" height="4" />
+                        <rect x="127" y="178" width="132" height="3" />
+                        <rect x="119" y="210" width="145" height="3" />
+                    </g>
+                    <path d="M220 118 V86" stroke="#333" stroke-width="3" />
+                    <path d="M208 97 H232" stroke="#333" stroke-width="2" />
+                    <circle cx="220" cy="84" r="3" fill="#f33">
+                        <animate attributeName="opacity" values="1;.1;1" dur="1.6s" repeatCount="indefinite" />
+                    </circle>
+                    <!-- <rect x="-12" y="-2" width="24" height="4" fill="#ccc" transform="translate(246,110)">
+                        <animateTransform attributeName="transform" type="rotate" from="0 246 110" to="360 246 110"
+                            dur="4s" repeatCount="indefinite" additive="sum" />
+                    </rect> -->
+                </g>
+            </g>
+
+            <!-- water over hull + foam -->
+            <g mask="url(#hm)">
+                <rect x="60" y="326" width="960" height="44" fill="url(#cover)" filter="url(#b4)" />
+                <path d="M100 336 Q300 329 500 336 T960 336" stroke="#fff" stroke-opacity=".5" stroke-width="3"
+                    fill="none" filter="url(#b2)">
+                    <animateTransform attributeName="transform" type="translate" values="0 0;-12 1;0 0" dur="3s"
+                        repeatCount="indefinite" />
+                </path>
+            </g>
+            <path d="M930 338 Q978 318 1015 336 Q978 346 930 343 Z" fill="#fff" opacity=".6" filter="url(#b2)" />
+            <polygon points="110,338 -260,328 -260,352 110,346" fill="#fff" opacity=".13" filter="url(#b2)" />
+
+            <!-- fog -->
+            <ellipse cx="200" cy="290" rx="380" ry="40" fill="url(#fog)" filter="url(#b6)">
+                <animateTransform attributeName="transform" type="translate" values="-80 0;120 0;-80 0" dur="30s"
+                    repeatCount="indefinite" />
+            </ellipse>
+            <ellipse cx="800" cy="320" rx="420" ry="34" fill="url(#fog)" filter="url(#b6)">
+                <animateTransform attributeName="transform" type="translate" values="100 0;-120 0;100 0" dur="36s"
+                    repeatCount="indefinite" />
+            </ellipse>
+
+            <!-- indicator -->
+            <g transform="translate(500,40)">
+                <circle class="ring" r="30" fill="none" stroke="#ffc800" stroke-width="3" />
+                <path class="hint" d="M-14 -10 L14 -10 L0 14 Z" fill="#ffc800" />
+                <text class="hint" y="-40" fill="#ffc800" font-size="22" text-anchor="middle" font-weight="700">CLICK
+                    THE SHIP</text>
+            </g>
+
+        </svg>
